@@ -1,0 +1,26 @@
+{% extends 'library.html' %}
+
+{% block title %}
+    <title>upload</title>
+{% endblock  %}
+
+
+{% block body %}
+    <div class="mt-3 text-center">
+        <h2>Upload Your Books</h2>
+        <center>
+            <form method = 'POST' enctype="multipart/form-data">
+                {% csrf_token %}
+                <table class = 'w-50 table table-light alert-warning' >
+                    {% for field in upload %}
+                    <tr>
+                        <th>{{field.label}}</th>
+                        <td>{{ field }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+                <button type="submit" class="btn btn-lg btn-warning">Submit</button>
+            </form>
+        </center>
+    </div>
+{% endblock  %}
